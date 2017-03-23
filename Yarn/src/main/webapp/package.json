@@ -8,9 +8,12 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
-    "start": "ember server",
-    "test": "ember test"
+    "build": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember build",
+    "start": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember server",
+    "test": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember test",
+
+    "build:mvn": "TMPDIR=tmp node/node ./node_modules/ember-cli/bin/ember build -prod",
+    "test:mvn": "TMPDIR=tmp node/node ./node_modules/ember-cli/bin/ember test"
   },
   "repository": "",
   "engines": {
@@ -19,6 +22,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "bower": "1.7.7",
     "broccoli-asset-rev": "^2.4.2",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.4.3",
@@ -36,6 +40,7 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.1",
+    "phantomjs-prebuilt": "2.1.13"
   }
 }
