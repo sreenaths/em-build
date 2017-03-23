@@ -10,8 +10,8 @@
   <properties>
     <webappDir>src/main/webapp</webappDir>
     <node.executable>${basedir}/src/main/webapp/node/node</node.executable>
-    <nodeVersion>v5.7.1</nodeVersion>
-    <npmVersion>3.6.0</npmVersion>
+    <nodeVersion>v6.9.1</nodeVersion>
+    <yarnVersion>v0.16.1</yarnVersion>
     <skipTests>false</skipTests>
   </properties>
 
@@ -22,7 +22,7 @@
         <plugin>
           <groupId>com.github.eirslett</groupId>
           <artifactId>frontend-maven-plugin</artifactId>
-          <version>1.1</version>
+          <version>1.2</version>
         </plugin>
         <plugin>
           <artifactId>exec-maven-plugin</artifactId>
@@ -88,21 +88,24 @@
         <executions>
           <execution>
             <phase>generate-resources</phase>
-            <id>install node and npm</id>
+            <id>install node and yarn</id>
             <goals>
-              <goal>install-node-and-npm</goal>
+              <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
               <nodeVersion>${nodeVersion}</nodeVersion>
-              <npmVersion>${npmVersion}</npmVersion>
+              <yarnVersion>${yarnVersion}</yarnVersion>
             </configuration>
           </execution>
           <execution>
             <phase>generate-resources</phase>
-            <id>npm install</id>
+            <id>yarn install</id>
             <goals>
-              <goal>npm</goal>
+              <goal>yarn</goal>
             </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
           </execution>
           <execution>
             <phase>generate-resources</phase>
@@ -129,7 +132,7 @@
               <workingDirectory>${webappDir}</workingDirectory>
               <executable>${node.executable}</executable>
               <arguments>
-                <argument>node/node_modules/npm/bin/npm-cli</argument>
+                <argument>node_modules/npm/bin/npm-cli</argument>
                 <argument>run</argument>
                 <argument>build:mvn</argument>
               </arguments>
@@ -146,7 +149,7 @@
               <workingDirectory>${webappDir}</workingDirectory>
               <executable>${node.executable}</executable>
               <arguments>
-                <argument>node/node_modules/npm/bin/npm-cli</argument>
+                <argument>node_modules/npm/bin/npm-cli</argument>
                 <argument>run</argument>
                 <argument>test:mvn</argument>
               </arguments>
