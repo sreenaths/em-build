@@ -1,0 +1,7 @@
+em-build
+Copyright (c) 2017 Sreenath Somarajapuram
+
+This project bundle includes fonts protected under the Open Font License.
+These fonts can only be distributed as part of a piece of software, but
+not individually. See the license for details.  http://scripts.sil.org/OFL.
+More information on included fonts can be found in the LICENSE file.
