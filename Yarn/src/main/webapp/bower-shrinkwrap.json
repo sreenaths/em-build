@@ -1,0 +1,20 @@
+{
+  "https://github.com/components/ember.git": {
+    "2.4.3": "ae7946ae30345812f82af002b78480b573db42f2"
+  },
+  "https://github.com/dockyard/ember-qunit-notifications.git": {
+    "0.1.0": "a83277aa7a1c0545c66e6d133caebb9a620e71ad"
+  },
+  "https://github.com/dockyard/qunit-notifications.git": {
+    "0.1.1": "7a13f6dba5a340e1cb9e0b64c1c711e4d7edaca1"
+  },
+  "https://github.com/ember-cli/ember-cli-shims.git": {
+    "0.1.1": "5f514ce71f7dc9aedc885371f00fce7349562e06"
+  },
+  "https://github.com/ember-cli/ember-cli-test-loader.git": {
+    "0.2.2": "5c184b79b279ba0438bce0dd30b696efbc030a64"
+  },
+  "https://github.com/jquery/jquery-dist.git": {
+    "2.2.4": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
+  }
+}

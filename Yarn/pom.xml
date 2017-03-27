@@ -8,10 +8,10 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <webappDir>src/main/webapp</webappDir>
-    <node.executable>${basedir}/src/main/webapp/node/node</node.executable>
-    <nodeVersion>v6.9.1</nodeVersion>
-    <yarnVersion>v0.16.1</yarnVersion>
+    <webappDir>${basedir}/target/webapp</webappDir>
+    <node.executable>${webappDir}/node/node</node.executable>
+    <nodeVersion>v5.12.0</nodeVersion>
+    <yarnVersion>v0.21.3</yarnVersion>
     <skipTests>false</skipTests>
   </properties>
 
@@ -78,6 +78,37 @@
         </configuration>
       </plugin>
 
+      <!-- copy resources to target -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${webappDir}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/webapp</directory>
+                  <filtering>true</filtering>
+                  <excludes>
+                    <exclude>node/**/*</exclude>
+                    <exclude>node_modules/**/*</exclude>
+                    <exclude>bower_components/**/*</exclude>
+                    <exclude>dist/**/*</exclude>
+                    <exclude>tmp/**/*</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- Install Node & dependencies -->
       <plugin>
         <groupId>com.github.eirslett</groupId>
@@ -104,12 +135,15 @@
               <goal>yarn</goal>
             </goals>
             <configuration>
-              <arguments>install</arguments>
+              <arguments>install --frozen-lockfile</arguments>
             </configuration>
           </execution>
           <execution>
             <phase>generate-resources</phase>
             <id>bower install</id>
+            <configuration>
+              <arguments>install --strict-shrinkwrap</arguments>
+            </configuration>
             <goals>
               <goal>bower</goal>
             </goals>
@@ -172,7 +206,7 @@
         </executions>
         <configuration>
           <minimize>true</minimize>
-          <targetGroups>tez-ui,vendor</targetGroups>
+          <targetGroups>webapp,vendor</targetGroups>
           <destinationFolder>${basedir}/target/minified-resources/assets</destinationFolder>
           <contextFolder>${webappDir}/dist/assets</contextFolder>
           <wroFile>${basedir}/src/main/webapp/WEB-INF/wro.xml</wroFile>

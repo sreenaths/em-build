@@ -11,7 +11,6 @@
     "build": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember build",
     "start": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember server",
     "test": "TMPDIR=tmp node ./node_modules/ember-cli/bin/ember test",
-
     "build:mvn": "TMPDIR=tmp node/node ./node_modules/ember-cli/bin/ember build -prod",
     "test:mvn": "TMPDIR=tmp node/node ./node_modules/ember-cli/bin/ember test"
   },
@@ -42,5 +41,8 @@
     "ember-resolver": "^2.0.3",
     "loader.js": "^4.0.1",
     "phantomjs-prebuilt": "2.1.13"
+  },
+  "dependencies": {
+    "bower-shrinkwrap-resolver-ext": "^0.1.0"
   }
 }

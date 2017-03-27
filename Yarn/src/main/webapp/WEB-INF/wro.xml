@@ -3,7 +3,7 @@
   <group name='vendor'>
     <js>/vendor.js</js>
   </group>
-  <group name='tez-ui'>
+  <group name='webapp'>
     <js>/webapp.js</js>
   </group>
 </groups>
